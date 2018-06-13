@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Starter app that shows different content to EU users",
   "main": "index.js",
-  "repository": "git@github.com/Nukki/gdpr-react-redux-starter.git",
+  "repository": "git@github.com/Nukki/nukki-starter.git",
   "scripts": {
     "start": "node server/index.js",
     "watch": "webpack && nodemon server/index.js",
