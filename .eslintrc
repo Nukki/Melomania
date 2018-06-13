@@ -1,0 +1,18 @@
+{
+  parser: "babel-eslint",
+  "plugins": [
+    "react",
+    "react-redux"
+  ],
+    "rules": {
+      "max-len": [1, 120, 2, {ignoreComments: true}],
+      "react/prop-types": [0],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "react/prefer-stateless-function": [1],
+      "no-nested-ternary": [1]
+    },
+    "extends": ["airbnb"],
+    "globals": {
+        "document": true,
+    }
+}

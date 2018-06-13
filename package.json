@@ -1,0 +1,55 @@
+{
+  "name": "nukki-starter",
+  "version": "1.0.0",
+  "description": "Starter app that shows different content to EU users",
+  "main": "index.js",
+  "repository": "git@github.com/Nukki/gdpr-react-redux-starter.git",
+  "scripts": {
+    "start": "node server/index.js",
+    "watch": "webpack && nodemon server/index.js",
+    "build": "webpack",
+    "build-watch": "webpack -w"
+  },
+  "keywords": [
+    "node",
+    "react",
+    "redux",
+    "boilerplate",
+    "starter"
+  ],
+  "author": "Nikki Jack",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "chalk": "^2.4.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-react-redux": "^2.3.0",
+    "nodemon": "^1.17.5",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
+  }
+}

@@ -1,0 +1,54 @@
+.big {
+  margin: 20px 0px 0px 20px;
+  font-size: 55px;
+  text-align: center;
+  font-family: "Century Gothic","Courier New", monospace;
+}
+
+.rotating {
+  animation: rotating 1s linear infinite;
+}
+
+@-webkit-keyframes rotating
+  {
+  from
+    {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    }
+  to
+    {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    }
+  }
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    justify-content: center;
+    width:15%;
+}
+
+.top-space {
+  margin-top: 70px;
+}
