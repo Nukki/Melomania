@@ -6,18 +6,19 @@ const router = require('./router');
 const { resolve } = require('path');
 
 app.use('/public', express.static('public'))
-   .use(bodyParser.urlencoded({extended: true}))
-   .use(bodyParser.json())
-   .use('/api', router);
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
+  .use('/api', router);
 
 // send index.html
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(resolve(__dirname, '../public/index.html'));
-})
+});
 
 // error handling
 app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
+  next();
 });
 app.use((req, res) => {
   res.sendStatus(404);
