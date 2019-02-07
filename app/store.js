@@ -6,4 +6,3 @@ import reducer from './reducers';
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware, logger));
 export default store;
-

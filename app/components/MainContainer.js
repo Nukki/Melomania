@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { hideModal, showModal } from '../actions/ModalActions';
 
-const MainContainer = ({ name }) => (
-  <div>
-    <div className="big top-space">
-      {name} Starter
-    </div>
-    <div>
-      <img className="rotating center" src="/public/images/ball.png" alt="ball" />
-    </div>
-  </div>
-);
+class MainContainer extends Component {
+  openNameModal() {
+    this.props.showModal({
+      open: true,
+      title: 'Alert Modal',
+      closeModal: this.closeModal,
+    }, 'alert');
+  }
 
-function mapStateToProps({ name }) {
-  return { name };
+  render() {
+    return (
+      <div>
+        <div className="big top-space">
+           Melomaniac
+        </div>
+        <button onClick={this.openNameModal}>modal</button>
+      </div>
+    );
+  }
 }
 
-export default connect(mapStateToProps)(MainContainer);
+const mapStateToProps = ({ name }) => ({ name });
+
+
+const mapDispatchToProps = dispatch => ({
+  hideModal: () => dispatch(hideModal()),
+  showModal: (modalProps, modalType) => {
+    dispatch(showModal({ modalProps, modalType }));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

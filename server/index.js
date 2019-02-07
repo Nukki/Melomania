@@ -1,14 +1,27 @@
 const chalk = require('chalk');
+const mongoose = require("mongoose");
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const router = require('./router');
 const { resolve } = require('path');
 
+const devRouter = require('./router/dev');
+const userRouter = require('./router/user');
+
+// db setup
+const dbRoute = process.env.MONGO_DB;
+mongoose.connect(dbRoute, { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+db.once("open", () => console.log("connected to the database"));
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+// setup routes
 app.use('/public', express.static('public'))
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
-  .use('/api', router);
+  .use('/user', userRouter)
+  .use('/dev', devRouter);
 
 // send index.html
 app.get('/*', (req, res) => {

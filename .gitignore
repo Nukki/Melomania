@@ -3,3 +3,4 @@ package-lock.json
 bundle.js
 .DS_Store
 yarn.lock
+cert/
