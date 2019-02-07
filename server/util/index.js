@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const axios = require('axios');
 const Song = require('../models/Song');
+const User = require('../models/User');
 
 /*
 Music Genre Codes:
@@ -129,5 +130,36 @@ module.exports = {
         callback({ right: false, plusScore });
       }
     });
+  },
+
+  // create a db entry with unique user name
+  // @name string of new user name, string
+  createUser: (name, callback) => {
+    const usr = new User({ name, score: 0 });
+    usr.save((err, u) => {
+      const result = err ? { error: 'duplicate user' } : u;
+      callback(result);
+    });
+  },
+
+  // @name user to update, string
+  // @score new score to insert, number
+  updateUserScore: (name, score, callback) => {
+    User.findOne({ name }, (err, usr) => {
+      if (err) callback({ error: 'could not update user'});
+      usr.score = score;
+      usr.save((err, u) => {
+        const result = err ? { error: 'could not save score' } : { msg: 'success!'};
+        callback(result);
+      });
+    });
+  },
+
+
+  getTop20: (callback) => {
+    User.find().sort([['score', 'descending']]).limit(20)
+    .then((users) =>  callback(users))
+    .catch((err) => callback({ error: 'could not get top 20'}))
+
   },
 }

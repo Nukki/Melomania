@@ -5,11 +5,15 @@ const chalk = require('chalk');
 
 
 router.post('/create', (req, res) => {
-  console.log('create');
+  util.createUser(req.body.name, (result) => {
+    res.json({ data: result });
+  })
 });
 
 router.post('/update', (req, res) => {
-  console.log('update');
+  util.updateUserScore(req.body.name, req.body.score, (result) => {
+    res.json({ data: result });
+  })
 });
 
 router.post('/checkAnswer', (req, res) => {
@@ -19,15 +23,15 @@ router.post('/checkAnswer', (req, res) => {
 });
 
 router.get('/leaderboard', (req, res) => {
-  console.log('leadernoard');
+  util.getTop20((top20) => {
+   res.json({ data: top20 })
+  })
 });
 
 router.get('/newSong', (req, res) => {
   util.pickSongAndAnswerOptions((songAndAnswerOptions) => {
-    console.log(chalk.blue("inside route ", songAndAnswerOptions));
     res.json({ data: songAndAnswerOptions });
   });
 });
-
 
 module.exports = router
