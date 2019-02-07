@@ -27,6 +27,9 @@ router.get('/populateSongs', (req, res) => {
      07 '90s Alternative Essentials
      08 '90s Electronic Essentials
     */
+
+    // create one mega playlist
+    // each song will know its genre
     util.populateTable('pl.606afcbb70264d2eb2b51d8dbcfa6a12', '00')
     .then(() => {
       util.populateTable('pl.1a7fd42205674dd282d106f533f4bea6', '01');

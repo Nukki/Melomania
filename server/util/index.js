@@ -2,8 +2,24 @@ const chalk = require('chalk');
 const axios = require('axios');
 const Song = require('../models/Song');
 
+/*
+Music Genre Codes:
+ 00 Top 100 USA Now
+ 01 Classic Rock
+ 02 '00s Hip-Hop/R&B Essentials
+ 03 '90s Hip-Hop Essentials
+ 04 '10s Club Essentials
+ 05 Classical Music Essentials
+ 06 Best of 2000 by topsify
+ 07 '90s Alternative Essentials
+ 08 '90s Electronic Essentials
+*/
+
 module.exports = {
 
+  // inserts an Apple Music playlist into db
+  // @playlist Apple Music API playlist id, string
+  // @genreCode a string that represents a genre
   populateTable: (playlist, genreCode) => {
     const musicApiRoot = 'https://api.music.apple.com/v1/catalog/us/playlists';
     return axios.get(`${musicApiRoot}/${playlist}`, {
@@ -44,6 +60,9 @@ module.exports = {
   },
 
 
+  // selects a random song of random genre from db
+  // passes result object to callback
+  // answer options are made up of random artist names in the same genre
   pickSongAndAnswerOptions: (callback) => {
     let songAndAnswerOptions = { // the result object
       songUrl: '',
@@ -95,10 +114,20 @@ module.exports = {
     .catch((err) => console.log("error in picking a song ", err));
   },
 
-
-  checkAnswer: (artist, genreCode, playlistIndex) => {
-    console.log('lol');
-    // how many points to add.
-    // if classical music ==> add 2
+  // checks if the user guess is correct
+  // @artist is the artists that the user picked, string
+  // @genreCode is genre of a song in question, string
+  // @playlistIndex index of the song in the genre playlist, number
+  check: (artist, genreCode, playlistIndex, callback) => {
+    Song.findOne({ playlistIndex, genreCode }, (err, sng) => {
+      let plusScore = 0;
+      if (sng.artist === artist) { // correct guess
+        // give more points for classical music
+        plusScore = genreCode === '05' ? 2 : 1;
+        callback({right: true, plusScore });
+      } else { // incorrect guess
+        callback({ right: false, plusScore });
+      }
+    });
   },
 }

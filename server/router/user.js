@@ -13,8 +13,9 @@ router.post('/update', (req, res) => {
 });
 
 router.post('/checkAnswer', (req, res) => {
-  util.checkAnswer('something', 'genre', 'index');
-  console.log('update');
+  util.check(req.body.answer, req.body.genreCode, req.body.playlistIndex, (result) => {
+    res.json({ data: result });
+  });
 });
 
 router.get('/leaderboard', (req, res) => {
