@@ -9,7 +9,14 @@
       "react/prop-types": [0],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "react/prefer-stateless-function": [1],
-      "no-nested-ternary": [1]
+      "no-nested-ternary": [1],
+      "object-curly-newline": [0, {multiline: true, minProperties: 1}],
+      "jsx-a11y/label-has-for": [1],
+      "no-unused-vars": [1],
+      "jsx-a11y/anchor-is-valid": [1, {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+        }]
     },
     "extends": ["airbnb"],
     "globals": {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { hideModal, showModal } from '../actions/ModalActions';
 
 class MainContainer extends Component {
@@ -17,7 +18,8 @@ class MainContainer extends Component {
         <div className="big top-space">
            Melomaniac
         </div>
-        <button onClick={this.openNameModal}>modal</button>
+        <Link href="#" className="btn btn-primary" to="/name"> Play </Link>
+        <Link href="#" className="btn btn-primary" to="/leaderboard"> Leaderboard </Link>
       </div>
     );
   }

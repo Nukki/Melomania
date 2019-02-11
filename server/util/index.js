@@ -137,7 +137,7 @@ module.exports = {
   createUser: (name, callback) => {
     const usr = new User({ name, score: 0 });
     usr.save((err, u) => {
-      const result = err ? { error: 'duplicate user' } : u;
+      const result = err ? { error: 'This username is already taken' } : u;
       callback(result);
     });
   },
