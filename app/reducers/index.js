@@ -4,6 +4,7 @@ import userReducer from './UsernameReducer';
 import modalReducer from './ModalReducer';
 import songReducer from './SongReducer';
 import answerReducer from './AnswerReducer';
+import leaderboardReducer from './LeaderboardReducer';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   song: songReducer,
   answer: answerReducer,
+  leaders: leaderboardReducer,
 });
 
 export default rootReducer;
