@@ -6,6 +6,7 @@ export const SHOW_MODAL = 'SHOW_MODAL';
 export const SET_USER = 'SET_USER';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
 export const CLEAR_USER = 'CLEAR_USER';
+export const UPD_USER = 'UPD_USER';
 
 // song types
 export const FETCH_SONG_BEGIN = 'FETCH_SONG_BEGIN';

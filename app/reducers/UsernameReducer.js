@@ -1,9 +1,8 @@
-import { SET_USER, CLEAR_USER, UPDATE_SCORE } from '../actions/ActionTypes';
+import { SET_USER, CLEAR_USER, UPD_USER } from '../actions/ActionTypes';
 
 const initialState = {
   name: null,
-  score: 0,
-  error: null,
+  points: 0,
 };
 
 export default (state = initialState, action) => {
@@ -12,18 +11,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         name: action.payload.name,
-        score: action.payload.score,
-        error: null,
       };
-    case UPDATE_SCORE:
+    case UPD_USER:
       return {
         ...state,
-        score: action.playload,
-        error: null,
+        points: action.payload.points,
       };
     case CLEAR_USER:
       return initialState;
     default:
-      return { ...state };
+      return state;
   }
 };

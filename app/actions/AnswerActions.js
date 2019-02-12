@@ -5,7 +5,7 @@ import {
   CHECK_ANSWER_FAILURE,
   CLEAR_ANSWER } from './ActionTypes';
 import { handleErrors } from './SongActions';
-import { updateScore } from './UserActions';
+import { updateUser } from './UserActions';
 
 // action creators
 export const checkAnswerBegin = () => ({
@@ -28,7 +28,6 @@ export const clearAnswer = () => ({
 
 // thunks
 export const getAnswer = (oldScore, answer, genreCode, playlistIndex) => {
-  console.log('=============================== ', oldScore);
   return (dispatch) => {
     dispatch(checkAnswerBegin());
     return axios.post('/user/checkAnswer', { answer, genreCode, playlistIndex })
@@ -39,7 +38,9 @@ export const getAnswer = (oldScore, answer, genreCode, playlistIndex) => {
         return res.data.data;
       })
       .then((data) => {
-        if (data.right) dispatch(updateScore(oldScore + data.plusScore));
+        const newScore = oldScore + data.plusScore;
+        console.log('=============================== ', newScore);
+        if (data.right) dispatch(updateUser(newScore));
         return data;
       })
       .catch(error => dispatch(checkAnswerFailure(error)));

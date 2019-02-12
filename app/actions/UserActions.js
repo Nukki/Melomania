@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SubmissionError } from 'redux-form';
-import { SET_USER, CLEAR_USER, UPDATE_SCORE } from './ActionTypes';
+import { SET_USER, CLEAR_USER, UPD_USER } from './ActionTypes';
 import { handleErrors } from './SongActions';
 
 // action creators
@@ -9,13 +9,13 @@ export const setUser = (name, score) => ({
   payload: { name, score },
 });
 
-export const updateScore = score => ({
-  type: UPDATE_SCORE,
-  payload: score,
-});
-
 export const clearUser = () => ({
   type: CLEAR_USER,
+});
+
+export const updateUser = newPoints => ({
+  type: UPD_USER,
+  payload: { points: newPoints },
 });
 
 /* thunks

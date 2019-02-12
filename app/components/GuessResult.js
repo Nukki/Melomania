@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 
 class GuessResult extends Component {
   render() {
+    const { answer, loading, error } = this.props;
     return (
       <div className="big top-space">
         <div>
            GuessResult
         </div>
         {
-          this.props.answer && (
+          answer && !loading && (
             <div>
               <div>{this.props.answer.right ? 'Thats right' : 'NOPE'}</div>
               <div>{`${this.props.answer.artist} ${this.props.answer.songName}`}</div>
@@ -25,10 +26,9 @@ class GuessResult extends Component {
 }
 
 const mapStateToProps = state => ({
-  song: state.song.song,
-  loading: state.song.loading,
-  error: state.song.error,
   answer: state.answer,
+  loading: state.answer.loading,
+  error: state.answer.error,
 });
 
 export default connect(mapStateToProps)(GuessResult);

@@ -15,8 +15,8 @@ class SongGuesser extends Component {
   }
 
   answerSelected = (answer) => {
-    const { score, song } = this.props;
-    this.props.getAnswer(score, answer, song.genreCode, song.playlistIndex);
+    const { user, song } = this.props;
+    this.props.getAnswer(user.points, answer, song.genreCode, song.playlistIndex);
     // this.props.clearSong();
   }
 
@@ -31,7 +31,7 @@ class SongGuesser extends Component {
           song && <audio controls src={song.songUrl} />
         }
         {
-          song && song.answerOptions.map(option => (
+          song && !loading && song.answerOptions.map(option => (
             <Link
               to="/result"
               key={option}
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
   song: state.song.song,
   loading: state.song.loading,
   error: state.song.error,
-  score: state.user.score,
+  user: state.user,
 });
 
 const mapDispatchToProps = { fetchSong, clearSong, getAnswer };
