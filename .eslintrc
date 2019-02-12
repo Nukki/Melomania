@@ -16,7 +16,9 @@
       "jsx-a11y/anchor-is-valid": [1, {
         "components": [ "Link" ],
         "specialLink": [ "to" ]
-        }]
+        }],
+      "arrow-body-style": [1],
+      "jsx-a11y/media-has-caption": [1]
     },
     "extends": ["airbnb"],
     "globals": {

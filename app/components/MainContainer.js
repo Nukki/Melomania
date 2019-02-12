@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { hideModal, showModal } from '../actions/ModalActions';
+import { clearSong } from '../actions/SongActions';
+import { clearUser } from '../actions/UserActions';
 
 class MainContainer extends Component {
-  openNameModal() {
-    this.props.showModal({
-      open: true,
-      title: 'Alert Modal',
-      closeModal: this.closeModal,
-    }, 'alert');
+  componentDidMount() {
+    // clear state in case browser back button was pushed to get here
+    if (this.props.user.name) {
+      this.props.clearUser();
+      this.props.clearSong();
+    }
   }
 
   render() {
@@ -18,21 +19,18 @@ class MainContainer extends Component {
         <div className="big top-space">
            Melomaniac
         </div>
-        <Link href="#" className="btn btn-primary" to="/name"> Play </Link>
-        <Link href="#" className="btn btn-primary" to="/leaderboard"> Leaderboard </Link>
+        <Link className="btn btn-primary" to="/name"> Play </Link>
+        <Link className="btn btn-primary" to="/leaderboard"> Leaderboard </Link>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ name }) => ({ name });
+const mapStateToProps = ({ user }) => ({ user });
 
-
-const mapDispatchToProps = dispatch => ({
-  hideModal: () => dispatch(hideModal()),
-  showModal: (modalProps, modalType) => {
-    dispatch(showModal({ modalProps, modalType }));
-  },
-});
+const mapDispatchToProps = {
+  clearSong,
+  clearUser,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

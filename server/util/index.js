@@ -125,9 +125,11 @@ module.exports = {
       if (sng.artist === artist) { // correct guess
         // give more points for classical music
         plusScore = genreCode === '05' ? 2 : 1;
-        callback({right: true, plusScore });
+        const { artist, songName } = sng;
+        callback({right: true, plusScore, artist, songName });
       } else { // incorrect guess
-        callback({ right: false, plusScore });
+        const { artist, songName } = sng;
+        callback({ right: false, plusScore, artist, songName });
       }
     });
   },

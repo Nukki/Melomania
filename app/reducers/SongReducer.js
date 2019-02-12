@@ -1,4 +1,8 @@
-import { FETCH_SONG_BEGIN, FETCH_SONG_SUCCESS, FETCH_SONG_FAILURE } from '../actions/ActionTypes';
+import {
+  FETCH_SONG_BEGIN,
+  FETCH_SONG_SUCCESS,
+  FETCH_SONG_FAILURE,
+  CLEAR_SONG } from '../actions/ActionTypes';
 
 const initialState = {
   song: null,
@@ -37,6 +41,8 @@ export default (state = initialState, action) => {
         error: action.payload.error,
         song: null,
       };
+    case CLEAR_SONG:
+      return initialState;
     default:
       return state;
   }

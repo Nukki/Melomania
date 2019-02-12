@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { FETCH_SONG_BEGIN, FETCH_SONG_SUCCESS, FETCH_SONG_FAILURE } from './ActionTypes';
+import {
+  FETCH_SONG_BEGIN,
+  FETCH_SONG_SUCCESS,
+  FETCH_SONG_FAILURE,
+  CLEAR_SONG } from './ActionTypes';
 
 /*
   Song
@@ -13,37 +17,44 @@ import { FETCH_SONG_BEGIN, FETCH_SONG_SUCCESS, FETCH_SONG_FAILURE } from './Acti
 
 // action creators
 export const fetchSongBegin = () => ({
-  type: FETCH_SONG_BEGIN
+  type: FETCH_SONG_BEGIN,
 });
 
 export const fetchSongSuccess = song => ({
   type: FETCH_SONG_SUCCESS,
-  payload: { song }
+  payload: { song },
 });
 
 export const fetchSongFailure = error => ({
   type: FETCH_SONG_FAILURE,
-  payload: { error }
+  payload: { error },
 });
 
-// thunks
-export const fetchProducts = () => {
-  return dispatch => {
-    dispatch(fetchProductsBegin());
-    return axios.get('/newSong')
-      .then(handleErrors)
-      .then(res => {
-        dispatch(fetchProductsSuccess(res.data.data));
-        return res.data.data;
-      })
-      .catch(error => dispatch(fetchProductsFailure(error)));
-  };
-}
+export const clearSong = () => ({
+  type: CLEAR_SONG,
+});
 
 // Handle HTTP errors
-function handleErrors(response) {
-  if (!response.ok) {
+export const handleErrors = (response) => {
+  console.log('**********************');
+  console.log(response);
+  console.log('**********************');
+  if (response.status !== 200) {
     throw Error(response.statusText);
   }
   return response;
-}
+};
+
+// thunks
+export const fetchSong = () => {
+  return (dispatch) => {
+    dispatch(fetchSongBegin());
+    return axios.get('/user/newSong')
+      .then(handleErrors)
+      .then((res) => {
+        dispatch(fetchSongSuccess(res.data.data));
+        return res.data.data;
+      })
+      .catch(error => dispatch(fetchSongFailure(error)));
+  };
+};

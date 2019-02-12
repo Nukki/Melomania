@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import NameForm from './form/NameForm';
 
 class EnterName extends Component {
   render() {
+    const { user } = this.props;
+    if (user.name) {
+      return <Redirect to="/guess" />;
+    }
     return (
       <div>
         <div className="big top-space">
@@ -17,9 +21,7 @@ class EnterName extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.song.song,
-  loading: state.song.loading,
-  error: state.song.error,
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(EnterName);
