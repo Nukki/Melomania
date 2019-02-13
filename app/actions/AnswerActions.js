@@ -27,7 +27,7 @@ export const clearAnswer = () => ({
 });
 
 // thunks
-export const getAnswer = (oldScore, answer, genreCode, playlistIndex) => {
+export const getAnswer = (oldScore, name, answer, genreCode, playlistIndex) => {
   return (dispatch) => {
     dispatch(checkAnswerBegin());
     return axios.post('/user/checkAnswer', { answer, genreCode, playlistIndex })
@@ -40,7 +40,11 @@ export const getAnswer = (oldScore, answer, genreCode, playlistIndex) => {
       .then((data) => {
         const newScore = oldScore + data.plusScore;
         console.log('=============================== ', newScore);
-        if (data.right) dispatch(updateUser(newScore));
+        if (data.right) {
+          dispatch(updateUser(newScore));
+          axios.post('user/update', { name, score: newScore })
+            .catch(err => console.log(err));
+        }
         return data;
       })
       .catch(error => dispatch(checkAnswerFailure(error)));

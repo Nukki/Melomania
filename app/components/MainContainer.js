@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Flex, Box, Text } from 'rebass';
 import { clearSong } from '../actions/SongActions';
 import { clearUser } from '../actions/UserActions';
 
@@ -15,13 +16,28 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div>
-        <div className="big top-space">
-           Melomaniac
-        </div>
-        <Link className="btn btn-primary" to="/name"> Play </Link>
-        <Link className="btn btn-primary" to="/leaderboard"> Leaderboard </Link>
-      </div>
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        css={{ flex: 1 }}
+      >
+        <Box
+          p={2}
+          color="magenta"
+          bg="black"
+          css={{ height: '45%' }}
+        >
+          <Link to="/name"> Play </Link>
+        </Box>
+        <Box
+          p={2}
+          color="white"
+          bg="magenta"
+          css={{ height: '45%' }}
+        >
+          <Link to="/leaderboard"> Leaderboard </Link>
+        </Box>
+      </Flex>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Flex, Box, Text } from 'rebass';
 import { fetchSong, clearSong } from '../actions/SongActions';
 import { getAnswer } from '../actions/AnswerActions';
 
@@ -16,14 +17,17 @@ class SongGuesser extends Component {
 
   answerSelected = (answer) => {
     const { user, song } = this.props;
-    this.props.getAnswer(user.points, answer, song.genreCode, song.playlistIndex);
-    // this.props.clearSong();
+    this.props.getAnswer(user.points, user.name, answer, song.genreCode, song.playlistIndex);
   }
 
   render() {
-    const { song, loading, error } = this.props;
+    const { song, loading, error, user } = this.props;
+    if (!user.name) {
+      // in case of refresh go home
+      return <Redirect to="/" />;
+    }
     return (
-      <div className="big top-space">
+      <div>
         <div>
            SongGuesser
         </div>

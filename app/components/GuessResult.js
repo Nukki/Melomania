@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Flex, Box, Text } from 'rebass';
 
 class GuessResult extends Component {
   render() {
     const { answer, loading, error } = this.props;
     return (
-      <div className="big top-space">
+      <div>
         <div>
            GuessResult
         </div>

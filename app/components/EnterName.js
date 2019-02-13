@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Flex, Box, Text } from 'rebass';
 import NameForm from './form/NameForm';
 
 class EnterName extends Component {
@@ -11,7 +12,7 @@ class EnterName extends Component {
     }
     return (
       <div>
-        <div className="big top-space">
+        <div>
            Enter Name
         </div>
         <NameForm />

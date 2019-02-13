@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Flex, Box, Text } from 'rebass';
 import { submitUserForm } from '../../actions/UserActions';
 
 const NameForm = (props) => {

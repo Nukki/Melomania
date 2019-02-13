@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Flex, Box, Text } from 'rebass';
 import { fetchLeaderboard } from '../actions/Leaderboard';
 
 class Leaderboard extends Component {
@@ -12,7 +13,7 @@ class Leaderboard extends Component {
     const { leaders, loading, error } = this.props;
     return (
       <div>
-        <div className="big top-space">
+        <div>
            Leaderboard
         </div>
         <ul>
@@ -22,6 +23,7 @@ class Leaderboard extends Component {
           ))
           }
         </ul>
+        <Link to="/name"><button>Play</button></Link>
       </div>
     );
   }
