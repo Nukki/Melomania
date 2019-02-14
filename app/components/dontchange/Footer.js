@@ -5,12 +5,12 @@ export default class Footer extends Component {
   render() {
     return (
       <Text
-        fontSize={[1]}
-        fontWeight="bold"
-        textAlign="center"
-        color="magenta"
+        fontSize={[0, 1, 1]}
+        fontFamily="Menlo, monospace"
+        color="dimgray"
+        p={1}
       >
-        Footer text
+        Made with <span role="img"aria-label="music">🎶</span> by Nikki Jack &copy; 2019
       </Text>
     );
   }

@@ -1,58 +1,50 @@
-html, body, #root, div{
+html, body, #root, div {
   height: 100%;
   overflow: hidden;
-}
-.big {
-  margin: 20px 0px 0px 20px;
-  font-size: 55px;
-  text-align: center;
-  font-family: "Century Gothic","Courier New", monospace;
+  margin: 0;
 }
 
-.rotating {
-  animation: rotating 1s linear infinite;
+.github-corner .cat {
+  fill: #FFF;
+  color: #20B2AA;
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
 }
 
-@-webkit-keyframes rotating
-  {
-  from
-    {
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    }
-  to
-    {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    }
+.github-corner .octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation:octocat-wave
+  560ms ease-in-out
+}
+@keyframes octocat-wave {
+  0%,100% {
+    transform:rotate(0)
   }
-
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
+  20%,60% {
+    transform:rotate(-25deg)
   }
-  to {
-    transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
+  40%,80% {
+    transform:rotate(10deg)
+  }
+}
+@media (max-width:500px) {
+  .github-corner:hover .octo-arm {
+    animation:none
+  }
+  .github-corner .octo-arm {
+    animation:octocat-wave 560ms ease-in-out
   }
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 80px;
-    justify-content: center;
-    width:15%;
-}
-
-.top-space {
-  margin-top: 70px;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #FFF;
 }

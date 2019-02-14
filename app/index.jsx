@@ -7,9 +7,10 @@ import { Flex, Box } from 'rebass';
 import store from './store';
 
 import '../public/style/style.css';
+import Octocat from './components/icons/Octocat';
 import Header from './components/dontchange/Header';
 import Footer from './components/dontchange/Footer';
-import MainContainer from './components/MainContainer';
+import Home from './components/Home';
 import SongGuesser from './components/SongGuesser';
 import GuessResult from './components/GuessResult';
 import Leaderboard from './components/Leaderboard';
@@ -17,26 +18,29 @@ import EnterName from './components/EnterName';
 
 
 ReactDOM.render(
-  <Flex flexDirection="column" justifyContent="space-between" >
-    <Box flex={2}>
-      <Header />
-    </Box>
-    <Box flex={22}>
-      <Provider store={store}>
-        <Router>
-          <div>
-            <Route path="/" exact component={MainContainer} />
-            <Route path="/guess" component={SongGuesser} />
-            <Route path="/result" component={GuessResult} />
-            <Route path="/leaderboard" component={Leaderboard} />
-            <Route path="/name" component={EnterName} />
-          </div>
-        </Router>
-      </Provider>
-    </Box>
-    <Box flex={1}>
-      <Footer />
-    </Box>
-  </Flex>,
+  <Box bg="lightseagreen">
+    <Octocat />
+    <Flex flexDirection="column" justifyContent="space-around" >
+      <Box flex={5}>
+        <Header />
+      </Box>
+      <Box flex={26}>
+        <Provider store={store}>
+          <Router>
+            <div>
+              <Route path="/" exact component={Home} />
+              <Route path="/guess" component={SongGuesser} />
+              <Route path="/result" component={GuessResult} />
+              <Route path="/leaderboard" component={Leaderboard} />
+              <Route path="/name" component={EnterName} />
+            </div>
+          </Router>
+        </Provider>
+      </Box>
+      <Flex flex={2} alignItems="center" justifyContent="center">
+        <Footer />
+      </Flex>
+    </Flex>
+  </Box>,
   document.querySelector('#root'),
 );

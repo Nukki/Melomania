@@ -7,8 +7,9 @@ export default class Header extends Component {
       <Text
         fontSize={[3, 4, 5]}
         fontWeight="bold"
+        fontFamily="Menlo, monospace"
         textAlign="center"
-        color="magenta"
+        color="darksalmon"
       >
         Melomaniac
       </Text>
