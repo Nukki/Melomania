@@ -158,10 +158,10 @@ module.exports = {
   },
 
 
-  getTop20: (callback) => {
-    User.find().sort([['score', 'descending']]).limit(20)
+  getTop10: (callback) => {
+    User.find().sort([['score', 'descending']]).limit(10)
     .then((users) =>  callback(users))
-    .catch((err) => callback({ error: 'could not get top 20'}))
+    .catch((err) => callback({ error: 'could not get top 10'}))
 
   },
 }

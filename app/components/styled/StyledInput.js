@@ -6,7 +6,8 @@ const Input = styled.input`
   background: papayawhip;
   border: none;
   border-radius: 3px;
-  width: 20vw;
+  width: 24em;
+  height: 3em;
 `;
 
 export default Input;

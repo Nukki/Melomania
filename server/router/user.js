@@ -23,8 +23,8 @@ router.post('/checkAnswer', (req, res) => {
 });
 
 router.get('/leaderboard', (req, res) => {
-  util.getTop20((top20) => {
-   res.json({ data: top20 })
+  util.getTop10((top10) => {
+   res.json({ data: top10 })
   })
 });
 

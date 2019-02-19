@@ -9,7 +9,6 @@ export default class Header extends Component {
         fontWeight="bold"
         fontFamily="Menlo, monospace"
         textAlign="center"
-        color="darksalmon"
       >
         Melomaniac
       </Text>

@@ -25,11 +25,12 @@ class EnterName extends Component {
           alignItems="center"
           flex={4}
         >
-          <UserFace flex={4} />
+          <UserFace flex={5} />
+          <Box flex={[1, 1, 2]} />
           <Text
             flex={1}
-            mt={4}
-            fontSize={[3, 3, 4]}
+            mb={[2, 3, 3]}
+            fontSize={[3, 4, 4]}
             fontFamily="Menlo, monospace"
           >
             Please Enter Your Name
@@ -40,6 +41,7 @@ class EnterName extends Component {
           <NameForm />
         </Flex>
 
+        <Box flex={[2, 2, 1]} />
       </Flex>
     );
   }

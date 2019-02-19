@@ -1,11 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Flex, Box, Text, Button } from 'rebass';
-import Input from './StyledInput';
+import Input from '../styled/StyledInput';
+import ButtonOutline from '../styled/ButtonOutline';
 import { submitUserForm } from '../../actions/UserActions';
 
 const renderField = ({ input, label, type }) => (
-  <Box>
+  <Box mr={[0, 2, 3]}>
     <Input {...input} placeholder="name" type={type} />
   </Box>
 );
@@ -16,6 +17,8 @@ const NameForm = (props) => {
     <form className="wrapper" onSubmit={handleSubmit(submitUserForm)}>
       <Flex
         flexDirection={['column', 'row', 'row']}
+        justifyContent="flex-end"
+        alignItems="center"
       >
         <Field
           name="username"
@@ -24,9 +27,13 @@ const NameForm = (props) => {
         />
         {error && <strong>{error}</strong>}
         <Box>
-          <Button type="submit" disabled={submitting}>
+          <ButtonOutline
+            width={['15em', '7em', '7em']}
+            type="submit"
+            disabled={submitting}
+          >
             Enter
-          </Button>
+          </ButtonOutline>
         </Box>
       </Flex>
     </form>
