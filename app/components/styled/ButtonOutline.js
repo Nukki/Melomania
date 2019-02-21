@@ -8,12 +8,16 @@ const ButtonOutline = (props) => {
       variant="outline"
       borderRadius={8}
       css={{
-        border: '4px solid black',
-        backgroundColor: 'white',
-        color: 'black',
+        border: '4px solid white',
+        backgroundColor: 'darkslateblue',
+        color: 'white',
         padding: '12px 24px',
         fontSize: '16px',
         cursor: 'pointer',
+        '&: hover': {
+          backgroundColor: 'white',
+          color: 'darkslateblue',
+        },
       }}
     />
   );

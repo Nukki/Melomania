@@ -6,7 +6,8 @@ module.exports =  {
   output: {
     path: __dirname + '/public',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    globalObject: 'this'
   },
   module: {
     rules: [

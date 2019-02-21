@@ -96,17 +96,29 @@ module.exports = {
         // generate answer options
         const rightAnswer = sng.artist;
         let optionsArray = [];
-        const randIndex1 = Math.floor(Math.random() * songCount)
-        const randIndex2 = Math.floor(Math.random() * songCount)
-        const randIndex3 = Math.floor(Math.random() * songCount)
+        // const randIndex1 = Math.floor(Math.random() * songCount)
+        // const randIndex2 = Math.floor(Math.random() * songCount)
+        // const randIndex3 = Math.floor(Math.random() * songCount)
 
         Song.find({ genreCode: selectedGenre }, 'artist', (err, ppl) => {
           if (err) return err;
-          optionsArray.push(ppl[randIndex1].artist);
-          optionsArray.push(ppl[randIndex2].artist);
-          optionsArray.push(ppl[randIndex3].artist);
+          // generate wrong ansewrs
+          let optionsCounter = 0;
+          while (optionsCounter < 3) {
+            let index = Math.floor(Math.random() * songCount);
+            let option = ppl[index].artist;
+            if (optionsArray.includes(option) === false && option !== rightAnswer) {
+              optionsArray.push(option);
+              optionsCounter++;
+            }
+          }
+          // optionsArray.push(ppl[randIndex1].artist);
+          // optionsArray.push(ppl[randIndex2].artist);
+          // optionsArray.push(ppl[randIndex3].artist);
+          // insert right answer
           const rightAnswerIndex = Math.floor(Math.random() * 4);
           optionsArray.splice(rightAnswerIndex, 0, rightAnswer);
+          console.log(optionsArray);
           songAndAnswerOptions.answerOptions = optionsArray;
           callback(songAndAnswerOptions);
         });
@@ -137,11 +149,19 @@ module.exports = {
   // create a db entry with unique user name
   // @name string of new user name, string
   createUser: (name, callback) => {
-    const usr = new User({ name, score: 0 });
-    usr.save((err, u) => {
-      const result = err ? { error: 'This username is already taken' } : u;
-      callback(result);
-    });
+    if (!name) {
+      callback({ error: 'Username cannot be empty' });
+    }
+    else if (name.length > 15) {
+      callback({ error: 'Name too long. Try something shorter' });
+    }
+    else {
+      const usr = new User({ name, score: 0 });
+      usr.save((err, u) => {
+        const result = err ? { error: 'This username is already taken' } : u;
+        callback(result);
+      });
+    }
   },
 
   // @name user to update, string

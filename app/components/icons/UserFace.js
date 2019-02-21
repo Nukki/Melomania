@@ -3,10 +3,10 @@ import React from 'react';
 const UserFace = () => {
   return (
     <svg
-      width="70%"
-      height="70%"
+      width="60%"
+      height="60%"
       viewBox="0 0 60.002 60.002"
-      ariaHidden="true"
+      aria-hidden="true"
     >
       <path
         d="M59.795,26.569c-0.401-1.698-1.364-3.157-2.576-3.903c-0.811-0.499-1.676-0.662-2.508-0.461

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Box } from 'rebass';
+import ButtonOutline from './styled/ButtonOutline';
+import JustText from './styled/JustText';
+import AudioAnalyser from './audioViz/AudioAnalyser';
 import { fetchSong, clearSong } from '../actions/SongActions';
 import { getAnswer } from '../actions/AnswerActions';
 
@@ -27,26 +30,35 @@ class SongGuesser extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
-        <div>
-           SongGuesser
-        </div>
-        {
-          song && <audio controls src={song.songUrl} />
-        }
-        {
-          song && !loading && song.answerOptions.map(option => (
-            <Link
-              to="/result"
-              key={option}
-              answer={option}
-              onClick={() => this.answerSelected(option)}
-            >
-              {option}
-            </Link>
-          ))
-        }
-      </div>
+      <Flex flexDirection="column">
+        <JustText fontSize={[3, 4, 4]}>
+           Who made this song?
+           instructions blabla
+        </JustText>
+
+        <Flex flexDirection={['column', 'row', 'row']}>
+          {
+            song && <AudioAnalyser music={song.songUrl} />
+          }
+          <Flex flexDirection="column">
+            {
+              song && !loading && song.answerOptions.map(option => (
+                <Link
+                  to="/result"
+                  key={option}
+                  answer={option}
+                  onClick={() => this.answerSelected(option)}
+                >
+                  <ButtonOutline>
+                    {option}
+                  </ButtonOutline>
+                </Link>
+              ))
+            }
+          </Flex>
+        </Flex>
+
+      </Flex>
     );
   }
 }

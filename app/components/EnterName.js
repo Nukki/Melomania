@@ -25,7 +25,8 @@ class EnterName extends Component {
           alignItems="center"
           flex={4}
         >
-          <UserFace flex={5} />
+          <Box flex={[1, 1, 2]} />
+          <UserFace flex={[4, 3, 3]} />
           <Box flex={[1, 1, 2]} />
           <Text
             flex={1}
@@ -41,7 +42,6 @@ class EnterName extends Component {
           <NameForm />
         </Flex>
 
-        <Box flex={[2, 2, 1]} />
       </Flex>
     );
   }

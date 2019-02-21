@@ -18,7 +18,7 @@ import EnterName from './components/EnterName';
 
 
 ReactDOM.render(
-  <Box bg="lightseagreen">
+  <Box bg="darkslateblue">
     <Octocat />
     <Flex flexDirection="column" justifyContent="space-around" >
       <Box flex={5}>

@@ -25,9 +25,10 @@ const NameForm = (props) => {
           type="text"
           component={renderField}
         />
-        {error && <strong>{error}</strong>}
+        {error && <Box>{error}</Box>}
         <Box>
           <ButtonOutline
+            mt={[2, 0, 0]}
             width={['15em', '7em', '7em']}
             type="submit"
             disabled={submitting}

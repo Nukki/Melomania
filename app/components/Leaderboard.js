@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Flex, Box, Text, Button } from 'rebass';
 import ButtonOutline from './styled/ButtonOutline';
+import JustText from './styled/JustText';
+import CenteredText from './styled/CenteredText';
 import { fetchLeaderboard } from '../actions/Leaderboard';
 
 const showRow = (index, name, score) => (
   <Flex justifyContent="space-evenly" width={[3 / 4, 3 / 4, 1 / 2]} mx="auto">
-    <Text flex={1} textAlign="center" fontFamily="Menlo, monospace">{index}.</Text>
-    <Text flex={3} fontFamily="Menlo, monospace">{name}</Text>
-    <Text flex={1} textAlign="center" fontFamily="Menlo, monospace">{score}</Text>
+    <CenteredText flex={1} >{index}.</CenteredText>
+    <JustText flex={3} >{name}</JustText>
+    <CenteredText flex={1} >{score}</CenteredText>
   </Flex>
 );
 
@@ -21,11 +23,17 @@ class Leaderboard extends Component {
   render() {
     const { leaders, loading, error } = this.props;
     return (
-      <Flex flexDirection="column" color="#FFF">
-        <Text flex={2} textAlign="center" fontFamily="Menlo, monospace">
+      <Flex flexDirection="column" >
+        <CenteredText flex={2}>
            Top Players
-        </Text>
-        <Flex flexDirection="column" flex={10}>
+        </CenteredText>
+        <Flex
+          flexDirection="column"
+          flex={10}
+          bg="slateblue"
+          width={[3 / 4, 1 / 2, 2 / 5]}
+          py={4}
+        >
           {
           leaders && !loading && leaders.map((user, i) => (
             showRow(i + 1, user.name, user.score)

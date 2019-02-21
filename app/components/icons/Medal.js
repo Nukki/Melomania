@@ -3,8 +3,8 @@ import React from 'react';
 const Medal = () => {
   return (
     <svg
-      width="50%"
-      height="50%"
+      width="13vh"
+      height="13vh"
       viewBox="-32 0 512 512"
       xmlns="http://www.w3.org/2000/svg"
     >

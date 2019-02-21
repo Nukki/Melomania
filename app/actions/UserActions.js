@@ -30,7 +30,7 @@ export const getTheName = () => dispatch => (
 export const submitUserForm = (values, dispatch) => (
   axios.post('/user/create', { name: values.username })
     .then((response) => {
-      if (response.data.data.error) { // username is taken
+      if (response.data.data.error) { // username is taken or empty
         throw new SubmissionError({ _error: response.data.data.error });
       } else { // success
         console.log(response);
@@ -38,15 +38,3 @@ export const submitUserForm = (values, dispatch) => (
       }
     })
 );
-
-// export const checkAnswer = (oldScore, answer, genreCode, playlistIndex) => {
-//   return dispatch => (
-//     axios.post('/user/checkAnswer', { answer, genreCode, playlistIndex })
-//       .then(handleErrors)
-//       .then((res) => {
-//         if (res.data.data.right) dispatch(updateScore(res.data.data.plusScore + oldScore));
-//         return res.data.data;
-//       })
-//       .catch(error => dispatch(answerCheckFailure(error)))
-//   );
-// };

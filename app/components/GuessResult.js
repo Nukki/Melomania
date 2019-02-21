@@ -1,27 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Flex, Box, Text } from 'rebass';
+import { Link, Redirect } from 'react-router-dom';
+import { Flex, Box } from 'rebass';
+import ButtonOutline from './styled/ButtonOutline';
+import JustText from './styled/JustText';
 
 class GuessResult extends Component {
   render() {
-    const { answer, loading, error } = this.props;
+    const { answer, loading, error, user } = this.props;
+    if (!user.name) {
+      // in case of refresh go home
+      return <Redirect to="/" />;
+    }
     return (
-      <div>
-        <div>
-           GuessResult
-        </div>
+      <Flex flexDirection="column" alignItems="center">
         {
           answer && !loading && (
-            <div>
-              <div>{this.props.answer.right ? 'Thats right' : 'NOPE'}</div>
-              <div>{`${this.props.answer.artist} ${this.props.answer.songName}`}</div>
-            </div>
+            <Flex flexDirection="column">
+              <JustText>{ answer.right ? 'Well done!' : 'GAME OVER'}</JustText>
+              <JustText>{`${answer.songName} by ${answer.artist}`}</JustText>
+            </Flex>
           )
         }
-        <Link to="/"> Im done </Link>
-        <Link to="/guess"> Next song </Link>
-      </div>
+        {
+          answer && answer.right && (
+            <Flex flexDirection="row">
+              <Link to="/"><ButtonOutline> Im done </ButtonOutline></Link>
+              <Link to="/guess"><ButtonOutline> Next song </ButtonOutline></Link>
+            </Flex>
+          )
+        }
+        {
+          answer && !answer.right && (
+            <Flex flexDirection="row">
+              <Link to="/"><ButtonOutline> OK </ButtonOutline></Link>
+            </Flex>
+          )
+        }
+      </Flex>
     );
   }
 }
@@ -30,6 +46,7 @@ const mapStateToProps = state => ({
   answer: state.answer,
   loading: state.answer.loading,
   error: state.answer.error,
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(GuessResult);

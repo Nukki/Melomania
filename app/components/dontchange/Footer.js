@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { Flex, Box, Text } from 'rebass';
+import JustText from '../styled/JustText';
 
 export default class Footer extends Component {
   render() {
     return (
-      <Text
+      <JustText
         fontSize={[0, 1, 1]}
-        fontFamily="Menlo, monospace"
         color="dimgray"
         p={1}
       >
-        Made with <span role="img"aria-label="music">🎶</span> by Nikki Jack &copy; 2019
-      </Text>
+        Made with <span role="img" aria-label="music">🎶</span> by Nikki Jack &copy; 2019
+      </JustText>
     );
   }
 }
