@@ -1,5 +1,13 @@
+/* global window */
+/* global Audio */
+/* global requestAnimationFrame */
+/* global cancelAnimationFrame */
 import React, { Component } from 'react';
+import { Flex, Box } from 'rebass';
+import ClearButton from '../styled/ClearButton';
 import AudioVisualiser from './AudioVisualiser';
+import PauseIcon from '../icons/PauseIcon';
+import PlayIcon from '../icons/PlayIcon';
 
 class AudioAnalyser extends Component {
   constructor(props) {
@@ -33,9 +41,6 @@ class AudioAnalyser extends Component {
       this.playMusic();
       this.audioContext = this.audioContext || new (window.AudioContext ||
           window.webkitAudioContext)();
-
-      // this.audioContext = this.audioContext || new (window.AudioContext ||
-      //   window.webkitAudioContext)();
       this.analyser = this.audioContext.createAnalyser();
       this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
       this.source = this.source || this.audioContext.createMediaElementSource(this.audio);
@@ -54,12 +59,16 @@ class AudioAnalyser extends Component {
 
   render() {
     return (
-      <div className="controls">
-        <button onClick={this.toggleMicrophone} >
-          {this.state.isPlaying ? 'Stop' : 'Play'}
-        </button>
-        <AudioVisualiser audioData={this.state.audioData} />
-      </div>
+      <Flex style={{ position: 'relative' }}>
+        <ClearButton
+          flex={1}
+          onClick={this.toggleMicrophone}
+          style={{ position: 'absolute', bottom: '40%', left: '40%' }}
+        >
+          {this.state.isPlaying ? <PauseIcon /> : <PlayIcon />}
+        </ClearButton>
+        <AudioVisualiser flex={5} audioData={this.state.audioData} />
+      </Flex>
     );
   }
 }

@@ -48,3 +48,12 @@ html, body, #root, div {
   text-decoration: none;
   color: #FFF;
 }
+
+canvas {
+  padding: 20px;
+  margin: auto auto;
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}

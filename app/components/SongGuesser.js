@@ -31,16 +31,18 @@ class SongGuesser extends Component {
     }
     return (
       <Flex flexDirection="column">
-        <JustText fontSize={[3, 4, 4]}>
+        <JustText fontSize={[1, 3, 4]} flex={1}>
            Who made this song?
            instructions blabla
         </JustText>
 
-        <Flex flexDirection={['column', 'row', 'row']}>
-          {
-            song && <AudioAnalyser music={song.songUrl} />
-          }
-          <Flex flexDirection="column">
+        <Flex flex={[8, 5, 5]} flexDirection={['column', 'row', 'row']}>
+          <Box flex={2}>
+            {
+              song && <AudioAnalyser flex={3} music={song.songUrl} />
+            }
+          </Box>
+          <Flex flex={[4, 3, 3]} flexDirection="column" justifyContent="space-around" py={[0, 0, 3]}>
             {
               song && !loading && song.answerOptions.map(option => (
                 <Link

@@ -1,3 +1,4 @@
+/* global window */
 import React, { Component } from 'react';
 
 class AudioVisualiser extends Component {
@@ -14,6 +15,9 @@ class AudioVisualiser extends Component {
     const { audioData } = this.props;
     const canvas = this.canvas.current;
     const { height, width } = canvas;
+    // const height = '100px';
+    // const width = '100px';
+
     const context = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
@@ -30,7 +34,7 @@ class AudioVisualiser extends Component {
         grd.addColorStop(0.25, '#49da9a');
         grd.addColorStop(0.5, '#34bbe6');
         grd.addColorStop(0.75, '#4355db');
-        grd.addColorStop(1, '#d23be7');
+        grd.addColorStop(1, '#483D8B');
 
         // Fill with gradient
         context.beginPath();
