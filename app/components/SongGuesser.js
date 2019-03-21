@@ -30,19 +30,43 @@ class SongGuesser extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <Flex flexDirection="column">
-        <JustText fontSize={[1, 3, 4]} flex={1}>
-           Who made this song?
-           instructions blabla
-        </JustText>
+      <Flex flexDirection="column" alignItems="center">
+        <Flex flex={1} alignItems="center" >
+          <JustText>
+            {`Player: ${user.name}`}
+          </JustText>
+          <JustText ml={3}>
+            {`Score: ${user.points}`}
+          </JustText>
+        </Flex>
 
-        <Flex flex={[8, 5, 5]} flexDirection={['column', 'row', 'row']}>
-          <Box flex={2}>
+        <Flex flex={2} flexDirection="column" alignItems="start" px={2} >
+          <JustText fontSize={[2, 3]} flex={1}>
+             1. Press Play to listen to the song.
+          </JustText>
+          <JustText fontSize={[2, 3]} flex={1}>
+             2. Guess who made it - click on an artist name.
+          </JustText>
+        </Flex>
+
+        <Flex
+          flex={[8, 6]}
+          width="80vw"
+          flexDirection={['column', 'row', 'row']}
+          justifyContent="space-evenly"
+        >
+          <Box flex={[2, 3]}>
             {
               song && <AudioAnalyser flex={3} music={song.songUrl} />
             }
           </Box>
-          <Flex flex={[4, 3, 3]} flexDirection="column" justifyContent="space-around" py={[0, 0, 3]}>
+          <Flex
+            flex={[4, 2]}
+            flexDirection="column"
+            alignItems={['center', 'start']}
+            justifyContent={['space-around', 'space-evenly']}
+            py={[2, 3, 4]}
+          >
             {
               song && !loading && song.answerOptions.map(option => (
                 <Link

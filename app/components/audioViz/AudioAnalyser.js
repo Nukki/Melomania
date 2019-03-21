@@ -22,8 +22,8 @@ class AudioAnalyser extends Component {
 
   componentWillUnmount() {
     cancelAnimationFrame(this.rafId);
-    this.analyser.disconnect();
-    this.source.disconnect();
+    if (this.analyser) this.analyser.disconnect();
+    if (this.source) this.source.disconnect();
   }
 
   tick() {
@@ -32,7 +32,7 @@ class AudioAnalyser extends Component {
     this.rafId = requestAnimationFrame(this.tick);
   }
 
-  toggleMicrophone = () => {
+  togglePlay = () => {
     if (this.state.isPlaying) {
       this.setState({ isPlaying: false });
       this.audio.pause();
@@ -59,11 +59,11 @@ class AudioAnalyser extends Component {
 
   render() {
     return (
-      <Flex style={{ position: 'relative' }}>
+      <Flex justifyContent="center" style={{ width: 'inherit' }}>
         <ClearButton
           flex={1}
-          onClick={this.toggleMicrophone}
-          style={{ position: 'absolute', bottom: '40%', left: '40%' }}
+          onClick={this.togglePlay}
+          style={{ position: 'absolute', bottom: '50%', left: '50%' }}
         >
           {this.state.isPlaying ? <PauseIcon /> : <PlayIcon />}
         </ClearButton>
@@ -74,3 +74,5 @@ class AudioAnalyser extends Component {
 }
 
 export default AudioAnalyser;
+
+// style={{ position: 'absolute', bottom: '40%', left: '40%' }}

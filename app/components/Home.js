@@ -21,7 +21,7 @@ class Home extends Component {
   render() {
     return (
       <Flex flexDirection="column" justifyContent="space-around">
-        <Box flex={[2, 2, 2]}>
+        <Box flex={2}>
           <HomeInstructions />
         </Box>
 
@@ -29,7 +29,7 @@ class Home extends Component {
           flexDirection={['column', 'column', 'row']}
           justifyContent="center"
           alignItems="center"
-          flex={[3, 4, 4]}
+          flex={[5, 4]}
         >
 
           <Flex

@@ -10,7 +10,7 @@ const ButtonOutline = (props) => {
       fontFamily="Rubik, sans-serif"
       fontSize={['12px', '14px', '16px']}
       css={{
-        border: '4px solid white',
+        border: '3px solid white',
         backgroundColor: 'darkslateblue',
         color: 'white',
         padding: '12px 24px',

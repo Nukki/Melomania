@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "App for music lovers",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/Nukki/Melomania.git",
   "scripts": {
     "start": "webpack && node server/index.js",
     "watch": "webpack && nodemon server/index.js",

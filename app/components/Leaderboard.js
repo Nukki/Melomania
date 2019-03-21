@@ -8,7 +8,7 @@ import CenteredText from './styled/CenteredText';
 import { fetchLeaderboard } from '../actions/Leaderboard';
 
 const showRow = (index, name, score) => (
-  <Flex justifyContent="space-evenly" width={[3 / 4, 3 / 4, 1 / 2]} mx="auto">
+  <Flex key={name} justifyContent="space-evenly" width={[3 / 4, 3 / 4, 1 / 2]} mx="auto">
     <CenteredText flex={1} >{index}.</CenteredText>
     <JustText flex={3} >{name}</JustText>
     <CenteredText flex={1} >{score}</CenteredText>
@@ -23,16 +23,19 @@ class Leaderboard extends Component {
   render() {
     const { leaders, loading, error } = this.props;
     return (
-      <Flex flexDirection="column" >
-        <CenteredText flex={2}>
+      <Flex flexDirection="column" justifyContent="space-between" >
+        <CenteredText flex={1}>
            Top Players
         </CenteredText>
+
         <Flex
           flexDirection="column"
+          alignSelf="center"
           flex={10}
           bg="slateblue"
           width={[3 / 4, 1 / 2, 2 / 5]}
-          py={4}
+          py={[2, 4]}
+          mb={2}
         >
           {
           leaders && !loading && leaders.map((user, i) => (
@@ -40,7 +43,10 @@ class Leaderboard extends Component {
           ))
           }
         </Flex>
-        <Link flex={2} to="/name"><ButtonOutline>Start Game</ButtonOutline></Link>
+
+        <Flex flex={2} justifyContent="center" alignItems="center">
+          <Link flex={3} to="/name"><ButtonOutline>Start Game</ButtonOutline></Link>
+        </Flex>
       </Flex>
     );
   }

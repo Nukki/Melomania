@@ -8,22 +8,26 @@ export default class HomeInstructions extends Component {
       <Flex
         flexDirection="column"
         alignItems="center"
-        justifyContent="space-around"
-        py={[1, 3, 4]}
-        px={4}
+        justifyContent="start"
+        py={[4, 4]}
       >
         <JustText
           fontSize={[1, 3, 3]}
           color="lavenderblush"
-          flex={2}
         >
           Are you a fan of ALL music?
-          Can you recognize a song faster than Shazam?
         </JustText>
+
         <JustText
           fontSize={[1, 3, 3]}
           color="lavenderblush"
-          flex={1}
+        >
+          Can you recognize a song faster than Shazam?
+        </JustText>
+
+        <JustText
+          fontSize={[1, 3, 3]}
+          color="lavenderblush"
         >
           Test your music knowledge right now!
         </JustText>
@@ -31,3 +35,7 @@ export default class HomeInstructions extends Component {
     );
   }
 }
+
+
+// py={[1, 3, 4]}
+// px={4}

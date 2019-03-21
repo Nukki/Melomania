@@ -3,7 +3,7 @@ import React from 'react';
 const Octocat = () => {
   return (
     <a
-      href="https://your-url"
+      href="https://github.com/Nukki/Melomania"
       className="github-corner"
       aria-label="View source on GitHub"
     >
