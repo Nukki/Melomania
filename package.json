@@ -21,7 +21,6 @@
   "author": "Nikki Jack",
   "license": "ISC",
   "dependencies": {
-    "antd": "^3.13.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
@@ -43,7 +42,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-preset-env": "^1.7.0",
