@@ -9,9 +9,9 @@
   "repository": "https://github.com/Nukki/Melomania.git",
   "scripts": {
     "start": "node server/index.js",
-    "watch": "webpack && nodemon server/index.js",
-    "build": "webpack",
-    "build-watch": "webpack -w"
+    "watch": "webpack --mode development && nodemon server/index.js",
+    "build": "webpack --mode production",
+    "build-watch": "webpack --mode development -w"
   },
   "keywords": [
     "node",
