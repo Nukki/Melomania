@@ -18,7 +18,3 @@ const ClearButton = (props) => {
   );
 };
 export default ClearButton;
-
-// css={{
-//   backgroundColor: 'transparent',
-// }}

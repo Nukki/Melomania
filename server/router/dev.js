@@ -55,7 +55,7 @@ router.get('/populateSongs', (req, res) => {
     .then(() => {
       util.populateTable('pl.2a95256367dd4edd8f3f450e1e04bed2', '08');
     })
-    .catch( (err) => console.log('Oops something rwong in populate'));
+    .catch( (err) => console.log(chalk.red('Oops something wrong in populate')) );
     res.sendStatus(201);
   }
 });

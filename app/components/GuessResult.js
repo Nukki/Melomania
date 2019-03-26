@@ -33,8 +33,8 @@ class GuessResult extends Component {
                 </Flex>
                 <Flex flex={1} py={[5, 5]} flexDirection="column" alignItems="center" justifyContent="center">
                   <JustText>The song was</JustText>
-                  <JustText fontSize={3}>{`${answer.songName}`}</JustText>
-                  <JustText fontSize={3}>{`by ${answer.artist}`}</JustText>
+                  <JustText fontSize={[2, 3]}>{`${answer.songName}`}</JustText>
+                  <JustText fontSize={[2, 3]}>{`by ${answer.artist}`}</JustText>
                 </Flex>
               </Flex>
             )

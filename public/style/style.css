@@ -50,7 +50,7 @@ html, body, #root, div {
 }
 
 canvas {
-  padding: 20px;
+  padding: 0;
   margin: auto auto;
   display: block;
   width: 100px;

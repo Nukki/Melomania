@@ -3,8 +3,8 @@ import React from 'react';
 const PauseIcon = () => {
   return (
     <svg
-      width="7vh"
-      height="7vh"
+      width="42px"
+      height="42px"
       viewBox="0 0 510 510"
       xmlns="http://www.w3.org/2000/svg"
     >

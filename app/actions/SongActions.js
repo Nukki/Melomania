@@ -36,9 +36,6 @@ export const clearSong = () => ({
 
 // Handle HTTP errors
 export const handleErrors = (response) => {
-  console.log('**********************');
-  console.log(response);
-  console.log('**********************');
   if (response.status !== 200) {
     throw Error(response.statusText);
   }

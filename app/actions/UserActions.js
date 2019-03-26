@@ -18,13 +18,6 @@ export const updateUser = newPoints => ({
   payload: { points: newPoints },
 });
 
-/* thunks
-export const getTheName = () => dispatch => (
-  axios.get('/api')
-    .then(res => dispatch(gotName(res.data)))
-    .catch(err => console.error(err))
-);
-*/
 
 // thunks
 export const submitUserForm = (values, dispatch) => (
@@ -33,7 +26,6 @@ export const submitUserForm = (values, dispatch) => (
       if (response.data.data.error) { // username is taken or empty
         throw new SubmissionError({ _error: response.data.data.error });
       } else { // success
-        console.log(response);
         dispatch(setUser(response.data.data.name, response.data.data.score));
       }
     })

@@ -18,6 +18,10 @@ class AudioAnalyser extends Component {
     this.audio.crossOrigin = 'anonymous';
     this.audio.preload = 'none';
     this.audio.type = 'audio/x-m4a';
+    this.audio.addEventListener('ended', () => {
+      this.audio.currentTime = 0;
+      this.togglePlay();
+    });
   }
 
   componentWillUnmount() {
@@ -36,6 +40,7 @@ class AudioAnalyser extends Component {
     if (this.state.isPlaying) {
       this.setState({ isPlaying: false });
       this.audio.pause();
+      this.audio.currentTime = 0;
     } else {
       this.setState({ isPlaying: true });
       this.playMusic();
@@ -45,7 +50,6 @@ class AudioAnalyser extends Component {
       this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
       this.source = this.source || this.audioContext.createMediaElementSource(this.audio);
       this.source.connect(this.analyser);
-      console.log(this.source);
       this.rafId = requestAnimationFrame(this.tick);
       this.analyser.connect(this.audioContext.destination);
     }
@@ -59,15 +63,14 @@ class AudioAnalyser extends Component {
 
   render() {
     return (
-      <Flex justifyContent="center" style={{ width: 'inherit' }}>
+      <Flex justifyContent="center" alignItems="center">
         <ClearButton
-          flex={1}
           onClick={this.togglePlay}
-          style={{ position: 'absolute', bottom: '50%', left: '50%' }}
+          style={{ width: 'parent', position: 'absolute', bottom: '50', left: '50' }}
         >
           {this.state.isPlaying ? <PauseIcon /> : <PlayIcon />}
         </ClearButton>
-        <AudioVisualiser flex={5} audioData={this.state.audioData} />
+        <AudioVisualiser audioData={this.state.audioData} />
       </Flex>
     );
   }

@@ -20,12 +20,14 @@ const NameForm = (props) => {
         justifyContent="flex-end"
         alignItems="center"
       >
-        <Field
-          name="username"
-          type="text"
-          component={renderField}
-        />
-        {error && <Box>{error}</Box>}
+        <Flex flexDirection="column" justifyContent="flex-end">
+          <Field
+            name="username"
+            type="text"
+            component={renderField}
+          />
+          {error && <Box>{error}</Box>}
+        </Flex>
         <Box>
           <ButtonOutline
             mt={[2, 0, 0]}

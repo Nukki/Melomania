@@ -39,7 +39,6 @@ export const getAnswer = (oldScore, name, answer, genreCode, playlistIndex) => {
       })
       .then((data) => {
         const newScore = oldScore + data.plusScore;
-        console.log('=============================== ', newScore);
         if (data.right) {
           dispatch(updateUser(newScore));
           axios.post('user/update', { name, score: newScore })
