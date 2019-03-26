@@ -1,6 +1,9 @@
 {
   "name": "Melomania",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.5.0"
+  },
   "description": "App for music lovers",
   "main": "index.js",
   "repository": "https://github.com/Nukki/Melomania.git",
